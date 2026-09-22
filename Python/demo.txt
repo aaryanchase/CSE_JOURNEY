@@ -1,0 +1,2 @@
+This is demo file for python file handling.
+I'm understanding file handaling in python.
