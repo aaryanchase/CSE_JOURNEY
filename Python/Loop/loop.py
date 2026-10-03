@@ -1,12 +1,12 @@
 #while loops
 i=1
 while i<=10:
-    print("I love Khusi much more ❤️")
+    print("I love you much more ❤️")
     i+=1
 
 i=100
 while i>=1:
-    print ("Khusi loves Aaryan much more more more ❤️")
+    print ("She loves me much more more more ❤️")
     i-=1
 
 i=1
