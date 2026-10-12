@@ -1,27 +1,30 @@
 #include<stdio.h>
 int main()
 {
-    int i,j,k;
+    int i,j;
     
-    for(i=1;i<=5;i++)
+    for (i=1;i<=3;i++)
     {
-        if(i<=3)
+        for (j=1;j<=i;j++)
         {
-            for(j=1;j<=i;j++);
-            {
-                printf("*");
-            }
-            printf("\n");
+            printf("*");
+        }
+        
+        printf("\n");
+
+    }
+
+    for (i=2;i>=1;i--)
+    {
+        for (j=1;j<=i;j++)
+        {
+            printf("*");
         }
 
-        else
-        {
-            for(k=4;k<=5;k++)
-            {
-                printf("*");
-            }
-            printf("\n");
-        }
+        printf("\n");
+
     }
+
     return 0;
+
 }
