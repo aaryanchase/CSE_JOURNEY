@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - Lets learn it</title>
+</head>
+<body>
+    <h1>Form to apply for Sigma Web Development course</h1>
+    <form action="post">
+        <div>
+            <label for ="username">Enter your username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" autofocus>
+        </div>
+
+        <div>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+
+    </form>
+</body>
+</html>
+
+
+<!--
+input:
+The HTML element used to collect input from the user,
+such as text, passwords, checkboxes, and radio buttons.
+
+type="radio":
+Tells the browser to display a radio button.
+Radio buttons are useful when the user needs to select
+one option from a group.
+
+id="male":
+Provides a unique identifier for this particular input.
+It allows labels and JavaScript to identify the input.
+
+name="gender":
+Groups radio buttons with the same name.
+Only one radio button in the same group can be selected.
+
+value="male":
+Specifies the actual value of this option.
+When the form is submitted with Male selected,
+the browser can send gender=male.
+
+
+label:
+The HTML element used to provide a text description
+for an input field. It tells the user what the input
+option represents.
+
+for="male":
+Connects the label to the input element whose id is "male".
+When the user clicks the label text "Male", the
+corresponding radio button gets selected.
+-->

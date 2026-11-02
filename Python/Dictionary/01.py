@@ -1,0 +1,9 @@
+dict={
+    "name":"Aaryan",
+    "marks":[98,78,96],
+    "cgpa":9.8
+}
+dict["name"]="Himal"
+print(dict["name"])
+print(dict["marks"])
+print(dict["cgpa"])

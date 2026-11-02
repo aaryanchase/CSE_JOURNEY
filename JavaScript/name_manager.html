@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+
+   
+
+    <input type="text" id="n" placeholder="Enter your name">
+
+    <button onclick="addName()">Add Name</button>
+    <button onclick="showName()">Show Name</button>
+    <button onclick="deleteName()">Delete Name</button>
+
+    <h3 id="res"></h3>
+
+    <script>
+        function addName() {
+            let name = document.getElementById("n").value;
+
+            if (name.trim() === "") {
+                alert("Please enter a name!");
+                return;
+            }
+
+            localStorage.setItem("username", name);
+
+            document.getElementById("res").innerText =
+                "Name saved: " + name;
+
+            document.getElementById("n").value = "";
+        }
+
+        function showName() {
+            let name = localStorage.getItem("username");
+
+            if (name) {
+                document.getElementById("res").innerText =
+                    "Stored Name: " + name;
+            } else {
+                document.getElementById("res").innerText =
+                    "No name found!";
+            }
+        }
+
+        function deleteName() {
+            localStorage.removeItem("username");
+
+            document.getElementById("res").innerText =
+                "Name deleted successfully!";
+        }
+    </script>
+
+</body>
+</html>

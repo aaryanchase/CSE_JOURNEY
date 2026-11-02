@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #0002;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 14px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        #output {
+            margin-top: 20px;
+            text-align: left;
+            overflow-wrap: anywhere;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Name Manager</h1>
+
+        <input type="text" id="nameInput"
+               placeholder="Enter your name">
+
+        <div>
+            <button onclick="userName()">User Name</button>
+            <button onclick="addName()">Add Name</button>
+            <button onclick="showNames()">Show Name</button>
+            <button class="delete-btn"
+                    onclick="deleteName()">Delete Name</button>
+        </div>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // Load names from Local Storage
+        let names = JSON.parse(
+            localStorage.getItem("names") || "[]"
+        );
+
+        function saveNames() {
+            localStorage.setItem("names", JSON.stringify(names));
+        }
+
+        function userName() {
+            const name = document.getElementById("nameInput")
+                                .value.trim();
+
+            if (name === "") {
+                alert("Please enter your name!");
+                return;
+            }
+
+            alert("Your name is: " + name);
+        }
+
+        function addName() {
+            const input = document.getElementById("nameInput");
+            const name = input.value.trim();
+
+            if (name === "") {
+                alert("Please enter a name!");
+                return;
+            }
+
+            names.push(name);
+            saveNames();
+
+            input.value = "";
+            showNames();
+
+            alert("Name added successfully!");
+        }
+
+        function showNames() {
+            const output = document.getElementById("output");
+            output.replaceChildren();
+
+            const heading = document.createElement("h3");
+            heading.textContent = "Saved Names";
+            output.appendChild(heading);
+
+            if (names.length === 0) {
+                const message = document.createElement("p");
+                message.textContent = "No names saved yet.";
+                output.appendChild(message);
+                return;
+            }
+
+            const list = document.createElement("ul");
+
+            names.forEach(function(name, index) {
+                const item = document.createElement("li");
+                item.textContent = name + " ";
+
+                const deleteButton =
+                    document.createElement("button");
+
+                deleteButton.textContent = "Delete";
+                deleteButton.className = "delete-btn";
+
+                deleteButton.addEventListener("click", function() {
+                    names.splice(index, 1);
+                    saveNames();
+                    showNames();
+                });
+
+                item.appendChild(deleteButton);
+                list.appendChild(item);
+            });
+
+            output.appendChild(list);
+        }
+
+        function deleteName() {
+            const input = document.getElementById("nameInput");
+            const name = input.value.trim();
+
+            if (name === "") {
+                alert("Enter the name you want to delete!");
+                return;
+            }
+
+            const index = names.findIndex(function(savedName) {
+                return savedName.toLowerCase() === name.toLowerCase();
+            });
+
+            if (index === -1) {
+                alert("Name not found!");
+                return;
+            }
+
+            names.splice(index, 1);
+            saveNames();
+            input.value = "";
+            showNames();
+
+            alert("Name deleted successfully!");
+        }
+
+        // Display previously saved names when the page opens
+        showNames();
+    </script>
+</body>
+</html>

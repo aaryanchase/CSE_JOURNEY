@@ -1,0 +1,11 @@
+let fruits = ["Orange","Apple","Banana","Papaya","Mango"]
+
+// difference between array & object
+// explain diifferent types of operator in JAVA Script
+// difference betwen ==,=== in js using code example and code
+// what is a promise & sync and await in js
+// local strorage & session
+// different data types in js
+
+// let addNumber = (a,b,c) =>(a*b/c);
+// console.log(addNumber (2,4,6)); 
